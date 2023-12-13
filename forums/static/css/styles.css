@@ -3,14 +3,16 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    display: flex;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-}
+/*header {*/
+/*    background-color: #333;*/
+/*    color: white;*/
+/*    text-align: center;*/
+/*    padding: 1rem 0;*/
+/*    align-self: flex-start;*/
+/*}*/
 
 main {
     width: 80%;
