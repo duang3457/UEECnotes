@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Forum</h1>
+    </header>
+    <main>
+        <section id="post-list">
+            <h2>Posts</h2>
+            <div class="post">
+                <h3>Post Title 1</h3>
+                <p>Content of the first post...</p>
+            </div>
+            <div class="post">
+                <h3>Post Title 2</h3>
+                <p>Content of the second post...</p>
+            </div>
+        </section>
+        <section id="create-post">
+            <h2>Create Post</h2>
+            <form id="post-form">
+                <input type="text" id="post-title" placeholder="Title" required>
+                <textarea id="post-content" placeholder="Write your post here..." required></textarea>
+                <button type="submit">Submit Post</button>
+            </form>
+        </section>
+        <section id="comments">
+            <h2>Comments</h2>
+            <!-- Comments will be listed here -->
+        </section>
+    </main>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
