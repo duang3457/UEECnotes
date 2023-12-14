@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="../static/css/styles.css">
+      <style>
+       nav {
+            width: 200px;
+            height: 1000px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 50px 0;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url "forums:welcome" %}">笔记专区</a>
+        <a href="{% url "forums:forums" %}">论坛灌水区</a>
+        <a href="#">服务</a>
+        <a href="{% url "forums:contact" %}">联系我们</a>
+    </nav>
+    <main>
+<div>
+    欢迎优秀的内容创作者
+</div>
+<div>欢迎前端开发人员</div>
+<div>欢迎后端开发人员</div>
+<div>
+    联系QQ:1837827317
+</div>
+ </main>
+</body>
+</html>

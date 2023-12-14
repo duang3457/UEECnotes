@@ -1,0 +1,91 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--<script src="index.css"></script>-->
+  <meta charset="UTF-8">
+        <link rel="stylesheet" href="../static/css/styles.css">
+  <title>Main Page</title>
+  <style>
+      div{
+        text-align: center;
+        font-size: 24px;
+        padding: 15px;
+      }
+      .newline {
+         white-space: pre-line;
+      }
+       nav {
+            width: 200px;
+            height: 1000px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 50px 0;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+  </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url "forums:welcome" %}">笔记专区</a>
+        <a href="{% url "forums:forums" %}">论坛灌水区</a>
+        <a href="#">服务</a>
+        <a href="{% url "forums:contact" %}">联系我们</a>
+    </nav>
+<main>
+  <h1>UEEC10 算分任务/考试攻略</h1>
+    <h2>
+        抄袭后果严重，本站暂仅提供杂七杂八的要求说明，让你安心做作业，用心去考试
+    </h2>
+    <h3>都是自己人，手下留情，请勿攻击</h3>
+
+    <h3>（最新更新于2023年12月13日）</h3>
+
+    <div class="newline">
+        更新日志（2023.12.13）：
+        1、站点由note.yang3457.com改为ueec.yang3457.com
+        2、架构由PHP改为Django
+        3、增加论坛灌水区
+    </div>
+
+    <div>
+
+        <div>
+
+{#            <a href="{% url 'app01:index' %}">跳转到index</a>#}
+        </div>
+    <a href="https://student.unsw.edu.au/harvard-referencing">
+        https://student.unsw.edu.au/harvard-referencing
+    </a>
+     </div>
+ <div>
+    <a href="{% url 'forums:ab' %}">
+        AB相关的东西
+    </a>
+ </div>
+
+  <div>
+      ---------discussion skills----------
+  </div>
+{#  <img src="/static/img/DS/DS.png">#}
+  <div>
+
+  </div>
+
+  <div>
+
+  </div>
+{#  <img src="/static/img/DS/DS2.png">#}
+</main>
+</body>
+</html>
