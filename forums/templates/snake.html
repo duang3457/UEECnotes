@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>贪吃蛇</title>
-    <style>
-        .mf {
-            border: 1px solid #ddd;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .item {
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-        }
-        .player {
-            background-color: #444;
-        }
-        .eat {
-            background-color:rosybrown;
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}contact{% endblock %}
+{% block content %}
     <div class="mf"></div>
+    <div>使用‘W’\‘S’\‘A’\‘D’进行游戏</div>
     <button onclick="refreshPage()">重新开始</button>
 
     <script>
@@ -94,5 +75,4 @@
         }, 100)
         updatePlayer()
     </script>
-</body>
-</html>
+{% endblock %}

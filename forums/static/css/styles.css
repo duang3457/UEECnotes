@@ -1,18 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    display: flex;
-}
-
-/*header {*/
-/*    background-color: #333;*/
-/*    color: white;*/
-/*    text-align: center;*/
-/*    padding: 1rem 0;*/
-/*    align-self: flex-start;*/
-/*}*/
 
 main {
     width: 80%;
@@ -45,4 +30,21 @@ button {
 
 button:hover {
     background-color: #4cae4c;
+}
+
+/*snake_css*/
+.mf {
+    border: 1px solid #ddd;
+    display: flex;
+    flex-wrap: wrap;
+}
+.item {
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+.player {
+    background-color: #444;
+}
+.eat {
+    background-color:rosybrown;
 }

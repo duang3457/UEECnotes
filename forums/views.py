@@ -3,6 +3,7 @@ from forums.models import Post
 
 # Create your views here.
 
+
 def game_snake(request):
     return render(request, 'snake.html')
 
