@@ -3,6 +3,9 @@ from forums.models import Post
 
 # Create your views here.
 
+def game_snake(request):
+    return render(request, 'snake.html')
+
 def forums(request):
     if request.method == 'POST':
         # 处理表单提交
