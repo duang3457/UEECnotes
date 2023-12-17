@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}game{% endblock %}
+{% block content %}
+<div class="div_body">
+    <div id="s_img" class="s_img">
+        <img src="../static/img/card_back.png" id="a1" alt="">
+        <img src="../static/img/little_water.png" id="a2" alt="">
+    </div>
+    <div id="s_img" class="s_img">
+        <img src="../static/img/card_back.png" id="a1" alt="">
+        <img src="../static/img/little_water.png" id="a2" alt="">
+    </div>
+    <div id="s_img" class="s_img">
+        <img src="../static/img/card_back.png" id="a1" alt="">
+        <img src="../static/img/little_water.png" id="a2" alt="">
+    </div>
+    <div id="s_img" class="s_img">
+        <img src="../static/img/card_back.png" id="a1" alt="">
+        <img src="../static/img/little_water.png" id="a2" alt="">
+    </div>
+    <div id="s_img" class="s_img">
+        <img src="../static/img/card_back.png" id="a1" alt="">
+        <img src="../static/img/little_water.png" id="a2" alt="">
+    </div>
+</div>
+    <script>
+{#    单个效果#}
+{#    const sImg = document.getElementById('s_img');#}
+{##}
+{#        sImg.addEventListener('mouseover', () => {#}
+{#            sImg.classList.add('rotate');#}
+{#        });#}
+
+{# 多个效果 #}
+const sImgs = document.querySelectorAll('.s_img');
+
+sImgs.forEach((sImg) => {
+    sImg.addEventListener('mouseover', () => {
+        sImg.classList.add('rotate');
+    });
+});
+
+
+    </script>
+{% endblock %}
