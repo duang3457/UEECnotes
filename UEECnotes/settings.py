@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'UEECnotes.middleware.get_user.GetUser',
 ]
 
 ROOT_URLCONF = 'UEECnotes.urls'
@@ -67,8 +68,7 @@ ROOT_URLCONF = 'UEECnotes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [BASE_DIR / 'templates']
-        # ,
+        'DIRS': [BASE_DIR / 'UEECnotes/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,12 +133,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# STATICFILES_DIRS = [
-#     # os.path.join(BASE_DIR, 'static'),
-#     os.path.join(BASE_DIR, 'game\static'),  # 添加应用目录
-#     # os.path.join(BASE_DIR, 'authentication\static'),
-#     os.path.join(BASE_DIR, 'forums\static'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'UEECnotes/static'),
+    os.path.join(BASE_DIR, 'game/static'),  # 添加应用目录
+    # os.path.join(BASE_DIR, 'authentication/static'),
+    os.path.join(BASE_DIR, 'forums/static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

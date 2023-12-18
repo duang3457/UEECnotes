@@ -5,18 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
-    {% load static %}
+  {% load static %}
   <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="../static/css/base_style.css?v=2">
-  <link rel="stylesheet" href="../static/css/styles.css?v=1">
-  <link rel="stylesheet" href="{% static 'css/game_styles.css' %}?v=1">
+  <link rel="stylesheet" href="{% static 'base/css/base_style.css' %}?v=1">
+  <link rel="stylesheet" href="{% static 'forums/css/styles.css' %}?v=1">
+  <link rel="stylesheet" href="{% static 'game/css/game_styles.css' %}?v=1">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="wrapper">
   <div class="sidebar">
-    <div class="title">导航栏</div>
+    <div class="title">
+        Hi! {{ fname }}
+    </div>
     <ul class="nav">
       <li>
         <a  href="{% url "forums:welcome" %}" onclick="handleClick(this)">笔记</a>
@@ -26,6 +28,9 @@
       </li>
       <li>
         <a  href="{% url "forums:game_snake" %}" onclick="handleClick(this)">小游戏(暂时损坏)</a>
+      </li>
+      <li>
+        <a  href="{% url "forums:contact" %}" onclick="handleClick(this)">联系我们</a>
       </li>
       <li>
         <a  href="{% url "forums:contact" %}" onclick="handleClick(this)">联系我们</a>
@@ -58,8 +63,8 @@
   </div>
 </div>
 <!-- partial -->
-  <script src='../static/js/jquery.min.js?v=1'></script>
-  <script src="../static/js/script.js?v=1"></script>
+  <script src='../static/base/js/jquery.min.js?v=1'></script>
+  <script src="../static/base/js/script.js?v=1"></script>
 <script>
      // 在页面加载时为当前 URL 对应的 <a> 元素添加 active 类
     $(document).ready(function() {

@@ -16,7 +16,11 @@ from UEECnotes import settings
 # Create your views here.
 def home(request):
 
-    return render(request, "home.html")
+    return render(request, "authentication/home.html")
+
+
+def profile(request):
+    return render(request, "authentication/profile.html")
 
 
 def signup(request):
@@ -83,7 +87,7 @@ def signup(request):
 
         current_site = get_current_site(request)
         email_subject = "Confirm your email @ UEECnotes"
-        message2 = render_to_string('email_confirmation.html',{
+        message2 = render_to_string('authentication/email_confirmation.html', {
             'name': my_user.first_name,
             'domain': current_site.domain,
             'uid': urlsafe_base64_encode(force_bytes(my_user.pk)),
@@ -100,7 +104,7 @@ def signup(request):
         # sign up successfully
         return redirect('authentication:welcome')
 
-    return render(request, "signup.html")
+    return render(request, "authentication/signup.html")
 
 
 def signin(request):
@@ -116,13 +120,13 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request, "welcome.html", {'fname': fname})
+            return render(request, "forums/welcome.html", {'fname': fname})
 
         else:
             messages.error(request, "Bad Credentials!")
             return redirect('authentication:home')
 
-    return render(request, "signin.html")
+    return render(request, "authentication/signin.html")
 
 
 def signout(request):
@@ -143,4 +147,4 @@ def activate(request, uidb64, token):
         login(request, myuser)
         return redirect('authentication:welcome')
     else:
-        return render(request, 'activate_failed.html')
+        return render(request, 'authentication/activate_failed.html')

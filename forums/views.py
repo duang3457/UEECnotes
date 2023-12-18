@@ -6,11 +6,13 @@ from forums.models import Post
 # Create your views here.
 @login_required(login_url='/home/')
 def game_snake(request):
-    return render(request, 'game.html')
+    fname = request.user.first_name
+    return render(request, 'game/game.html', {'fname': fname})
 
 
 @login_required(login_url='/home/')
 def forums(request):
+    fname = request.user.first_name
     if request.method == 'POST':
         # 处理表单提交
 
@@ -22,24 +24,26 @@ def forums(request):
 
 
         # 可以根据需要重定向到成功页面或其他页面
-        return redirect("forums:forums")
+        return redirect("forums:forums", {'fname': fname})
     if request.method == "GET":
         posts = Post.objects.all()
-        return render(request, 'forums.html', {'posts': posts})
+        return render(request, 'forums/forums.html', {'posts': posts, 'fname': fname})
 
 
 @login_required(login_url='/home/')
 def welcome(request):
     #print(request.user.is_authenticated)
     fname = request.user.first_name
-    return render(request, 'welcome.html', {"fname": fname})
+    return render(request, 'forums/welcome.html', {"fname": fname})
 
 
 @login_required(login_url='/home/')
 def contact(request):
-    return render(request, 'contact.html')
+    fname = request.user.first_name
+    return render(request, 'forums/contact.html', {"fname": fname})
 
 
 @login_required(login_url='/home/')
 def ab(request):
-    return render(request, 'notes/ab.html')
+    fname = request.user.first_name
+    return render(request, 'notes/ab.html', {"fname": fname})

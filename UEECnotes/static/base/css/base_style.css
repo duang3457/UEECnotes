@@ -51,8 +51,7 @@ body {
   font-size: 16px;
   line-height: 50px;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 7px;
+  /*letter-spacing: 7px;*/
   color: #eee;
   border-bottom: 1px solid #222;
   background: #2a2a2a;
