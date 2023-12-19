@@ -22,7 +22,6 @@ def forums(request):
         # 创建并保存新的Post对象
         Post.objects.create(post_name=title, post_content=content)
 
-
         # 可以根据需要重定向到成功页面或其他页面
         return redirect("forums:forums", {'fname': fname})
     if request.method == "GET":
@@ -32,7 +31,7 @@ def forums(request):
 
 @login_required(login_url='/home/')
 def welcome(request):
-    #print(request.user.is_authenticated)
+    # print(request.user.is_authenticated)
     fname = request.user.first_name
     return render(request, 'forums/welcome.html', {"fname": fname})
 
@@ -41,6 +40,10 @@ def welcome(request):
 def contact(request):
     fname = request.user.first_name
     return render(request, 'forums/contact.html', {"fname": fname})
+
+
+def update_log(request):
+    return render(request, 'forums/update_log.html')
 
 
 @login_required(login_url='/home/')

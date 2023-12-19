@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Authentication</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'authentication/css/home.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'authentication/css/modal.css' %}?v=1">
 </head>
 <body>
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>Message:</strong>{{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    {% endfor %}
-    <h3>Welcome to Geeks For Geeks</h3>
-    <button type="submit"><a href="{% url "authentication:signup" %}">SignUp</a></button>
-    <button type="submit"><a href="{% url "authentication:signin" %}">SignIn</a></button>
-    <button type="submit"><a href="{% url "authentication:signout" %}">SignOut</a></button>
+<div class="home_body">
+{% for message in messages %}
+    <div class="hidden-message" style="display: none;" data-message="{{ message }}">
+        {{ message }}
+    </div>
+{% endfor %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 弹窗结构 -->
+<div id="messageModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p id="modal-message"></p>
+    </div>
+</div>
+
+
+    <div class="home_shell">
+    <h6 class="home_title">Welcome to UEECnotes</h6>
+    <button type="submit"><a href="{% url "authentication:signup" %}">SignUp(注册)</a></button>
+    <button type="submit"><a href="{% url "authentication:signin" %}">SignIn(登录)</a></button>
+    <button type="submit"><a href="{% url "authentication:signout" %}">SignOut(登出)</a></button>
+    <button type="submit"><a href="{% url "forums:welcome" %}">Go to Main Page</a></button>
+    </div>
+    </div>
+{#<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>#}
+<script src="{% static 'authentication/js/modalMessage.js' %}"></script>
 </body>
 </html>

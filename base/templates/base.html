@@ -1,0 +1,59 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  {% load static %}
+  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="{% static 'base/css/base_style.css' %}?v=3">
+    {% block cssLink %}{% endblock %}
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="base_wrapper">
+  <div class="base_sidebar">
+    <div class="base_title">
+        Hi! {{ fname }}
+    </div>
+    <ul class="nav">
+      <li>
+        <a  href="{% url "forums:welcome" %}" onclick="handleClick(this)">笔记</a>
+      </li>
+      <li>
+        <a  href="{% url "forums:forums" %}" onclick="handleClick(this)">论坛</a>
+      </li>
+      <li>
+        <a  href="{% url "forums:game_snake" %}" onclick="handleClick(this)">小游戏(暂时损坏)</a>
+      </li>
+      <li>
+        <a  href="{% url "forums:contact" %}" onclick="handleClick(this)">联系我们</a>
+      </li>
+{#      <li>#}
+{#        <a  href="{% url "authentication:profile" %}" onclick="handleClick(this)">个人主页</a>#}
+{#      </li>#}
+      <li>
+        <a href="{% url "authentication:home" %}">Home(切换账号/退出账号)</a>
+      </li>
+    </ul>
+  </div> 
+  <div class="base_content content-is-open">
+    <span class='side-panel-toggle'>
+      <i class="fa fa-bars"></i>
+    </span>
+
+    <div class="well well-sm">
+      {% block content %}
+      
+      {% endblock %}
+    </div>
+    <hr>
+ </div>
+</div>
+</body>
+  <script src='../static/base/js/jquery.min.js'></script>
+  <script src="../static/base/js/script.js?v=4"></script>
+  {% block script %}
+  {% endblock %}
+</html>

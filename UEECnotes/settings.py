@@ -68,7 +68,7 @@ ROOT_URLCONF = 'UEECnotes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'UEECnotes/templates'],
+        'DIRS': [BASE_DIR / 'UEECnotes/../base/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,10 +131,10 @@ USE_TZ = True
 
 # 部署时打开它，因为nginx从根目录找static
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'UEECnotes/static'),
+    os.path.join(BASE_DIR, 'base/static'),
     os.path.join(BASE_DIR, 'game/static'),  # 添加应用目录
     # os.path.join(BASE_DIR, 'authentication/static'),
     os.path.join(BASE_DIR, 'forums/static'),

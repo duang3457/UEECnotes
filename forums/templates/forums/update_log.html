@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}笔记{% endblock %}
+{% block cssLink %}
+  <link rel="stylesheet" href="{% static 'forums/css/update_log.css' %}?v=5">
+   <link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
+    <!-- 引入字体 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&display=swap">
+{% endblock %}
+{% block content %}
+<div class="log_body">
+   <div class="log_shell">
+        <div class="shell_body">
+            <div class="log_button">
+                <div class="prev"><i class="iconfont icon-backward_filled"></i></div>
+                <div class="next"><i class="iconfont icon-forward_filled"></i></div>
+            </div>
+            <div class="shell_slider">
+                <div class="log_item">
+                    <div class="log_frame">
+                        <div class="log_box front">
+                            <h1>2023.12.19</h1>
+                            <span>
+                                1、增加了用户登录系统
+                                2、更新了日志UI
+                                3、更新了小游戏
+                            </span>
+                        </div>
+                        <div class="log_box left"></div>
+                        <div class="log_box right"> </div>
+                    </div>
+                </div>
+                <div class="log_item">
+                    <div class="log_frame">
+                        <div class="log_box front">
+                            <h1>2023.12.14</h1>
+                            <span>
+                                1、添加了小游戏分区（但css损坏）
+                                2、更新了UI，导航栏可以收回了
+                            </span>
+                        </div>
+                        <div class="log_box left"></div>
+                        <div class="log_box right"> </div>
+                    </div>
+                </div>
+                <div class="log_item">
+                    <div class="log_frame">
+                        <div class="log_box front">
+                            <h1>2023.12.13</h1>
+                            <span>
+                                1、站点由note.yang3457.com改为ueec.yang3457.com
+                                2、架构由PHP改为Django
+                                3、增加论坛灌水区
+                            </span>
+                        </div>
+                        <div class="log_box left"></div>
+                        <div class="log_box right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    // 获取所有的item元素
+    var items = document.getElementsByClassName('log_item');
+    // 循环遍历每个item
+    for (var i = 0; i < items.length; i++) {
+        // 获取当前item
+        var item = items[i];
+        var frame = item.getElementsByClassName('log_frame')[0];
+        var frontBox = frame.getElementsByClassName('front')[0];
+        var leftBox = frame.getElementsByClassName('left')[0];
+        var rightBox = frame.getElementsByClassName('right')[0];
+        // 设置背景图片
+        frontBox.style.backgroundImage = 'url(../../static/forums/img/' + (i + 1).toString().padStart(2, '0') + '.jpg)';
+        leftBox.style.backgroundImage = 'url(../../static/forums/img/' + (i + 1).toString().padStart(2, '0') + '.jpg)';
+        rightBox.style.backgroundImage = 'url(../../static/forums/img/' + (i + 1).toString().padStart(2, '0') + '.jpg)';
+    }
+    (function () {
+        "use strict";
+        var shell = document.getElementsByClassName('log_shell')[0];
+        var slider = shell.getElementsByClassName('shell_slider')[0];
+        var items = shell.getElementsByClassName('log_item');
+        var prevBtn = shell.getElementsByClassName('prev')[0];
+        var nextBtn = shell.getElementsByClassName('next')[0];
+        // 定义变量
+        var width, height, totalWidth, margin = 20,
+            currIndex = 0,
+            interval, intervalTime = 3000;
+        function init() {
+            // 初始化函数
+            resize();
+            move(Math.floor(items.length / 2));
+            bindEvents();
+            timer();
+        }
+        function resize() {
+            // 窗口大小变化时调整大小
+            width = Math.max(window.innerWidth * .20, 275);
+            height = window.innerHeight * .5;
+            totalWidth = width * items.length;
+            // 设置slider宽度
+            slider.style.width = totalWidth + "px";
+            // 设置每个item的宽度和高度
+            for (var i = 0; i < items.length; i++) {
+                let item = items[i];
+                item.style.width = (width - (margin * 2)) + "px";
+                item.style.height = height + "px";
+            }
+        }
+        function bindEvents() {
+            // 窗口大小变化时调整大小
+            window.onresize = resize;
+            // 点击prev按钮切换item
+            prevBtn.addEventListener('click', () => { prev(); });
+            nextBtn.addEventListener('click', () => { next(); });
+        }
+        init();
+        function move(index) {
+            // 移动shell到指定的item
+            if (index < 1) index = items.length;
+            if (index > items.length) index = 1;
+            currIndex = index;
+            // 遍历所有item
+            for (var i = 0; i < items.length; i++) {
+                let item = items[i],
+                    box = item.getElementsByClassName('log_frame')[0];
+                if (i === (index - 1)) {
+                    // 当前item添加active类并设置3D效果
+                    item.classList.add('item--active');
+                    box.style.transform = "perspective(1200px)";
+                } else {
+                    // 其他item移除active类并设置3D效果
+                    item.classList.remove('item--active');
+                    box.style.transform = "perspective(1200px) rotateY(" + (i < (index - 1) ? 40 : -40) + "deg)";
+                }
+            }
+            // 移动slider
+            slider.style.transform = "translate3d(" + ((index * -width) + (width / 2) + window.innerWidth / 2) + "px, 0, 0)";
+            // 设置body背景图片
+            var frontBox = items[index - 1].getElementsByClassName('front')[0];
+            var wellDiv = document.querySelector('.well');
+            wellDiv.style.backgroundImage = frontBox.style.backgroundImage;
+        }
+        function timer() {
+            // 定时器，自动切换shell
+            clearInterval(interval);
+            interval = setInterval(() => {
+                move(++currIndex);
+            }, intervalTime);
+        }
+        // 切换item
+        function prev() {
+            move(--currIndex);
+            timer();
+        }
+        function next() {
+            move(++currIndex);
+            timer();
+        }
+    })();
+</script>
+
+{% endblock %}
+
+
+{#{% block script %}#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>#}
+{#    <script>#}
+{#        (function($){#}
+{#            $.fn.timeline = function()#}
+{#            {#}
+{#                var selectors = {#}
+{#                    id: $(this),#}
+{#                    item: $(this).find(".item"),#}
+{#                    activeClass: "item--active",#}
+{#                    img:".img"#}
+{#                };#}
+{#                selectors.item.eq(0).addClass(selectors.activeClass);#}
+{#                selectors.id.css(#}
+{#                    "background-image",#}
+{#                    "url(" +#}
+{#                    selectors.item.first()#}
+{#                        .find(selectors.img)#}
+{#                        .attr("src") +#}
+{#                    ")"#}
+{#                );#}
+{#                var itemLength = selectors.item.length;#}
+{#                $(window).scroll(function(){#}
+{#                    var max,min;#}
+{#                    var pos = $(this).scrollTop();#}
+{#                    selectors.item.each(function(i){#}
+{#                        min = $(this).offset().top;#}
+{#                        max = $(this).height() + $(this).offset().top;#}
+{#                        var that = $(this);#}
+{#                        if (i === itemLength -2 && pos > min + $(this).height()/2){#}
+{#                            selectors.item.removeClass(selectors.activeClass);#}
+{#                            selectors.id.css(#}
+{#                                "background-image",#}
+{#                                "url(" +#}
+{#                                selectors.item.last()#}
+{#                                    .find(selectors.img)#}
+{#                                    .attr("src") +#}
+{#                                ")"#}
+{#                            );#}
+{#                            selectors.item.last().addClass(selectors.activeClass);#}
+{#                        }#}
+{#                        else if(pos <= max - 10 && pos >= min){#}
+{#                            selectors.id.css(#}
+{#                                "background-image",#}
+{#                                "url(" +#}
+{#                                $(this)#}
+{#                                .find(selectors.img)#}
+{#                                .attr("src") +#}
+{#                                ")"#}
+{#                            );#}
+{#                            selectors.item.removeClass(selectors.activeClass);#}
+{#                            $(item).addClass(selectors.activeClass);#}
+{#                        }#}
+{#                    });#}
+{#                });#}
+{#            };#}
+{#        })(jQuery)#}
+{##}
+{#        $("#shell").timeline();#}
+{#    </script>#}
+{#{% endblock %}#}

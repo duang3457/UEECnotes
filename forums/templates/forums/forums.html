@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}论坛{% endblock %}
+{% block cssLink %}
+  <link rel="stylesheet" href="{% static 'forums/css/styles.css' %}?v=1">
+{% endblock %}
 {% block content %}
     <main>
         <section id="post-list">
@@ -27,5 +31,4 @@
             <!-- Comments will be listed here -->
         </section>
     </main>
-    <script src="../../../UEECnotes/static/base/js/script.js?v=1"></script>
 {% endblock %}

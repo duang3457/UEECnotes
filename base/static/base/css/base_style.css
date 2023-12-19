@@ -21,16 +21,16 @@ body {
   background: #333;
   overflow-x: hidden;
 }
-.wrapper {
+.base_wrapper {
   display: -webkit-flex;
   display: flex;
   min-height: 100%;
 }
-.sidebar {
+.base_sidebar {
   position: absolute;
   width: 220px;
 }
-.content {
+.base_content {
   -webkit-flex: 1;
   flex: 1;
   padding: 30px;
@@ -39,7 +39,7 @@ body {
   transform: translate3d(0, 0, 0);
   transition: all 0.3s;
 }
-.content.content-is-open {
+.base_content.content-is-open {
   margin-left: 220px;
 }
 .side-panel-toggle {
@@ -47,7 +47,7 @@ body {
   font-size: 42px;
 }
 /* Demo Navigation */
-.title {
+.base_title {
   font-size: 16px;
   line-height: 50px;
   text-align: center;
@@ -67,8 +67,8 @@ body {
 .nav li a:before {
   font: 14px fontawesome;
   position: absolute;
-  top: 14px;
-  left: 20px;
+  top: 18px;
+  left: 18px;
 }
 .nav li:nth-child(1) a:before {
   content: '\f00a';

@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'authentication/css/signin.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'authentication/css/modal.css' %}?v=1">
 </head>
 <body>
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tages }} alert-dismissible fade show" role="alert">
-        <strong>Message:</strong>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+{% for message in messages %}
+    <div class="hidden-message" style="display: none;" data-message="{{ message }}">
+        {{ message }}
     </div>
 {% endfor %}
-<h3>SignIn</h3>
+<div id="messageModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p id="modal-message"></p>
+    </div>
+</div>
+
+    <div class="signin_body">
+    <div class="signin_shell">
+<h3 class="signin_title">SignIn</h3>
+
     <form action="/signin/" method="post">
         {% csrf_token %}
-        <label for="">Username</label>
+        <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="">
         <br>
-        <label for="">Password</label>
+        <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="">
         <br>
-
         <button type="submit">Sign In</button>
     </form>
+         <div style="display: flex;width:100%;justify-content: space-between">
+
+        <a href="{% url "authentication:signup" %}">Go to register!(去注册)</a>
+        <a href="{% url "authentication:home" %}">goBack(回主页)</a>
+         </div>
+</div>
+</div>
+    <script src="{% static 'authentication/js/modalMessage.js' %}"></script>
+
 </body>
 </html>

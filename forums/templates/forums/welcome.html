@@ -10,19 +10,9 @@
     <h3>都是自己人，手下留情，请勿攻击</h3>
 
     <h3>（最新更新于2023年12月14日）</h3>
-
-    <div class="newline"
-         style="white-space: pre-line;
-         font-size:20px;
-         border: 1px solid red;">
-        更新日志（2023.12.14）：
-        1、添加了小游戏分区（但css损坏）
-        2、更新了UI，导航栏可以收回了
-        更新日志（2023.12.13）：
-        1、站点由note.yang3457.com改为ueec.yang3457.com
-        2、架构由PHP改为Django
-        3、增加论坛灌水区
-    </div>
+    <h3>
+    <a href="{% url 'forums:update_log' %}">网站更新日志</a>
+    </h3>
 {% for message in messages %}
     <div class="alert alert-{{ message.tages }} alert-dismissible fade show" role="alert">
         <strong>Message:</strong>{{ message }}

@@ -3,38 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'authentication/css/signup.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'authentication/css/modal.css' %}?v=1">
 </head>
 <body>
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tages }} alert-dismissible fade show" role="alert">
-        <strong>Message:</strong>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+
+
+{% for message in messages %}
+    <div class="hidden-message" style="display: none;" data-message="{{ message }}">
+        {{ message }}
     </div>
 {% endfor %}
-<h3>SignUp</h3>
+<div id="messageModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p id="modal-message"></p>
+    </div>
+</div>
+<div class="signup_body">
+    <div class="signup_shell">
+<h3 class="signup_title">SignUp</h3>
     <form action="/signup/" method="post">
         {% csrf_token %}
-        <label for="">Username</label>
+        <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Create a username(Only letters and numbers)">
         <br>
-        <label for="">First Name</label>
+        <label for="fname">First Name</label>
         <input type="text" id="fname" name="fname" placeholder="Enter Your First Name">
         <br>
-        <label for="">Last Name</label>
+        <label for="lname">Last Name</label>
         <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name">
         <br>
-        <label for="">Email Address</label>
+        <label for="email">Email Address</label>
         <input type="email" id="email" name="email" placeholder="Enter Your Email Address">
         <br>
-        <label for="">Password</label>
+        <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Create a Password">
         <br>
-        <label for="">Confirm your password</label>
+        <label for="password_conf">Confirm your password</label>
         <input type="password" id="password_conf" name="password_conf" placeholder="Confirm Your Password">
 
         <button type="submit">Sign up</button>
     </form>
+    <div style="display: flex;width:100%;justify-content: space-between">
+    <a href="{% url "authentication:signin" %}">signIn(去登录)</a>
+    <a href="{% url 'authentication:home' %}">goBack(回主页)</a>
+    </div>
+    </div>
+ </div>
+
+    <script src="{% static 'authentication/js/modalMessage.js' %}"></script>
+
 </body>
 </html>

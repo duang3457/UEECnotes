@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}game{% endblock %}
+{% block cssLink %}
+  <link rel="stylesheet" href="{% static 'game/css/game_styles.css' %}?v=1">
+{% endblock %}
 {% block content %}
 <div class="div_body">
     <div id="s_img" class="s_img">

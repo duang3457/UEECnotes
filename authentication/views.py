@@ -15,7 +15,8 @@ from UEECnotes import settings
 
 # Create your views here.
 def home(request):
-
+    if not request.user.is_authenticated:
+        messages.error(request, "Please SignIn")
     return render(request, "authentication/home.html")
 
 
@@ -111,8 +112,8 @@ def signin(request):
 
     if request.method == "POST":
         # it is similar to request.POST.get('username')
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
 
@@ -123,8 +124,8 @@ def signin(request):
             return render(request, "forums/welcome.html", {'fname': fname})
 
         else:
-            messages.error(request, "Bad Credentials!")
-            return redirect('authentication:home')
+            messages.error(request, "Invalid username or password")
+            return redirect('authentication:signin')
 
     return render(request, "authentication/signin.html")
 
