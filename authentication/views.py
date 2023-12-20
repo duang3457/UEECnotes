@@ -103,7 +103,7 @@ def signup(request):
         email.fail_silently = True
         email.send()
         # sign up successfully
-        return redirect('authentication:welcome')
+        return redirect('forums:welcome')
 
     return render(request, "authentication/signup.html")
 
@@ -124,7 +124,7 @@ def signin(request):
             return render(request, "forums/welcome.html", {'fname': fname})
 
         else:
-            messages.error(request, "Invalid username or password")
+            messages.error(request, "Invalid username or password. If you have already registered, please confirm your confirmation email")
             return redirect('authentication:signin')
 
     return render(request, "authentication/signin.html")
@@ -146,6 +146,6 @@ def activate(request, uidb64, token):
         myuser.is_active = True
         myuser.save()
         login(request, myuser)
-        return redirect('authentication:welcome')
+        return redirect('forums:welcome')
     else:
         return render(request, 'authentication/activate_failed.html')

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'forums',
     'authentication',
     'game',
+    'base',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,7 @@ USE_TZ = True
 
 # 部署时打开它，因为nginx从根目录找static
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'base/static'),
