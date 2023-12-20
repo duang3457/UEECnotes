@@ -19,3 +19,5 @@ pip install -r requirements.txt
 '''bash
 python manage.py collectstatic
 '''
+
+### 未上传.env邮箱信息
