@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'authentication',
     'game',
     'base',
+    'userprofile',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +70,7 @@ ROOT_URLCONF = 'UEECnotes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'UEECnotes/../base/templates'],
+        'DIRS': [BASE_DIR / 'base/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,6 +96,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'authentication.MyUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -139,6 +141,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'game/static'),  # 添加应用目录
     os.path.join(BASE_DIR, 'authentication/static'),
     os.path.join(BASE_DIR, 'forums/static'),
+    os.path.join(BASE_DIR, 'userprofile/static'),
 ]
 
 # Default primary key field type

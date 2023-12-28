@@ -20,10 +20,6 @@ def home(request):
     return render(request, "authentication/home.html")
 
 
-def profile(request):
-    return render(request, "authentication/profile.html")
-
-
 def signup(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -101,6 +97,7 @@ def signup(request):
             [my_user.email],
         )
         email.fail_silently = True
+        # there should be error handling.
         email.send()
         # sign up successfully
         return redirect('forums:welcome')

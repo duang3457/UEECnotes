@@ -7,6 +7,5 @@ urlpatterns = [
     path('', welcome, name='welcome'),
     path('contact/', contact, name='contact'),
     path('ab/', ab, name="ab"),
-    path('game1/', game_snake, name='game_snake'),
     path('updatelog/', update_log, name='update_log'),
 ]

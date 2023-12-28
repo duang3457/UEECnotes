@@ -4,10 +4,6 @@ from forums.models import Post
 
 
 # Create your views here.
-@login_required(login_url='/home/')
-def game_snake(request):
-    fname = request.user.first_name
-    return render(request, 'game/game.html', {'fname': fname})
 
 
 @login_required(login_url='/home/')
