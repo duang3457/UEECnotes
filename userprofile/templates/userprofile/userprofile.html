@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-profile
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}contact{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div>
+        <h3>Hello!{{ fname }}</h3>
+        <h4>这是你的个人主页</h4>
+        <p>你的专业是：{{ major }}</p>
+    </div>
+{% endif %}
+
+{% endblock %}

@@ -3,7 +3,6 @@ from django.db import models
 from forums.models import Post
 # Create your models here.
 
-
 class MyUser(AbstractUser):
     B2024 = 2023
     Y2024 = 2024
@@ -26,6 +25,6 @@ class MyUser(AbstractUser):
         (TERM3, '3'),
     ]
     post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
-    admission_year = models.IntegerField(choices=YEAR_CHOICES)
-    admission_term = models.IntegerField(choices=TERM_CHOICES)
+    admission_year = models.IntegerField(choices=YEAR_CHOICES, null=True)
+    admission_term = models.IntegerField(choices=TERM_CHOICES, null=True)
     future_major = models.CharField(max_length=100, null=True)

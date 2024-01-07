@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include(('forums.urls', 'forums'), namespace="forums")),
     path('', include(('authentication.urls', 'authentication'), namespace="authentication")),
     path('', include(('game.urls', 'game'), namespace="game")),
+    path('profile/', include(('userprofile.urls', 'userprofile'), namespace="userprofile")),
 ]
