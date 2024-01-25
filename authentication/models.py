@@ -1,6 +1,5 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from forums.models import Post
 # Create your models here.
 
 class MyUser(AbstractUser):
@@ -24,7 +23,6 @@ class MyUser(AbstractUser):
         (TERM2, '2'),
         (TERM3, '3'),
     ]
-    post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
     admission_year = models.IntegerField(choices=YEAR_CHOICES, null=True)
     admission_term = models.IntegerField(choices=TERM_CHOICES, null=True)
     future_major = models.CharField(max_length=100, null=True)

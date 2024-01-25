@@ -15,8 +15,13 @@ class MyUserAdmin(UserAdmin):
     form = MyUserChangeForm
     add_form = MyUserCreationForm
 
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'future_major', 'get_post_name')
+
     def get_post_name(self, obj):
-        return obj.post.post_name if obj.post else None
+        posts = obj.post_set.all()  # 获取与该用户关联的所有帖子
+        if posts:
+            return ", ".join(post.post_name for post in posts)
+        return None
 
     get_post_name.short_description = 'Post Name'  # 设置列的标题
 
@@ -24,7 +29,7 @@ class MyUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2', 'future_major', 'email', 'get_post_name'),
+            'fields': ('username', 'password1', 'password2', 'future_major', 'email'),
         }),
     )
 
@@ -35,9 +40,8 @@ class MyUserAdmin(UserAdmin):
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser',
                                    'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
-        ('Additional info', {'fields': ('future_major', 'get_post_name')}),
+        ('Additional info', {'fields': ('future_major',)}),
     )
 
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'future_major', 'get_post_name')
 
 admin.site.register(MyUser, MyUserAdmin)

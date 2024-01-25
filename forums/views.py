@@ -19,7 +19,7 @@ def forums(request):
         Post.objects.create(post_name=title, post_content=content)
 
         # 可以根据需要重定向到成功页面或其他页面
-        return redirect("forums:forums", {'fname': fname})
+        return redirect("forums:forums")
     if request.method == "GET":
         posts = Post.objects.all()
         return render(request, 'forums/forums.html', {'posts': posts, 'fname': fname})
