@@ -9,6 +9,7 @@ class Post(models.Model):
     post_name = models.CharField(max_length=100)
     post_content = models.TextField()
     post_by = models.ForeignKey(MyUser, on_delete=models.SET_NULL, null=True)
+    post_by_name = models.CharField(max_length=100, null=True)
 
     def __str__(self):
        return f'post_name: {self.post_name}'

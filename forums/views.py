@@ -9,6 +9,7 @@ from forums.models import Post
 @login_required(login_url='/home/')
 def forums(request):
     fname = request.user.first_name
+    user_id = request.user.id
     if request.method == 'POST':
         # 处理表单提交
 
@@ -16,7 +17,11 @@ def forums(request):
         content = request.POST.get('post-content')
 
         # 创建并保存新的Post对象
-        Post.objects.create(post_name=title, post_content=content)
+        Post.objects.create(
+            post_name = title, 
+            post_content = content, 
+            post_by_id = user_id, 
+            post_by_name = fname)
 
         # 可以根据需要重定向到成功页面或其他页面
         return redirect("forums:forums")
@@ -25,10 +30,16 @@ def forums(request):
         return render(request, 'forums/forums.html', {'posts': posts, 'fname': fname})
 
 
-@login_required(login_url='/home/')
+
 def welcome(request):
     # print(request.user.is_authenticated)
-    fname = request.user.first_name
+    if request.user.is_authenticated:
+        # 安全地访问 first_name，因为用户已登录
+        fname = request.user.first_name
+    else:
+        # 处理未登录用户的情况
+        # 例如，你可以设置一个默认的名字，或者直接跳过某些操作
+        fname = "游客"
     return render(request, 'forums/welcome.html', {"fname": fname})
 
 

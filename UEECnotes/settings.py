@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-uja6j5_0lkz!^*v-+a8c1al!#m_i+hx5cae^us)2!i-5%t7ti3
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'ueec.yang3457.com',
+    'ueecnotes.com',
     '127.0.0.1',
 ]
 

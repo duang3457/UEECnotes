@@ -4,5 +4,7 @@ db.sqlite3
 **/__pycache__/
 .env
 .idea/
-
+ueecnotes.session.sql
+.vscode/
+__pycache__
 
