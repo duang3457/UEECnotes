@@ -21,7 +21,7 @@ pip freeze > requirements.txt
 
 pip install -r requirements.txt
 
-### 迁移数据库（model -> sqlite3）
+### 迁移数据库（model -> mysql）
 
 python manage.py makemigrations # 生成迁移文件
 python manage.py migrate # 根据迁移文件更变数据库
