@@ -13,4 +13,3 @@ class Post(models.Model):
 
     def __str__(self):
        return f'post_name: {self.post_name}'
-

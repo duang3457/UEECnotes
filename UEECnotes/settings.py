@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'game',
     'base',
     'userprofile',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
