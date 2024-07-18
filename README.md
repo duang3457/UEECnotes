@@ -32,12 +32,15 @@ pip install -r requirements.txt
 ### 迁移数据库（model -> mysql）
 
 python manage.py makemigrations # 生成迁移文件
+
 python manage.py migrate # 根据迁移文件更变数据库
 
 ### 在项目根目录下建一个.env文件（目前里面有发注册确认邮件的邮箱账号和密码），内容格式如下：
 
 EMAIL_HOST_USER=XXXX@XXXX.com
+
 EMAIL_HOST_PASSWORD=XXXXXXX
+
 （填自己小号邮箱进行测试）
 
 ### 创建超级用户（superuser）用来管理后台（包括登录）....../admin
