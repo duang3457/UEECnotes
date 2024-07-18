@@ -17,7 +17,15 @@ pip freeze > requirements.txt
 
 ## 下载项目后要干的事
 
-### 让自己的编辑器装环境（根据requirements.txt下载包）
+### 建虚拟环境（下面用python3.3以上自带的venv模块建虚拟环境，也可以用其他方式）
+
+python3 -m venv myenv(这个参数是环境名)
+
+### 激活虚拟环境
+
+.\myenv\Scripts\activate
+
+### 装依赖/包（根据requirements.txt下载包）
 
 pip install -r requirements.txt
 
@@ -25,6 +33,12 @@ pip install -r requirements.txt
 
 python manage.py makemigrations # 生成迁移文件
 python manage.py migrate # 根据迁移文件更变数据库
+
+### 在项目根目录下建一个.env文件（目前里面有发注册确认邮件的邮箱账号和密码），内容格式如下：
+
+EMAIL_HOST_USER=XXXX@XXXX.com
+EMAIL_HOST_PASSWORD=XXXXXXX
+（填自己小号邮箱进行测试）
 
 ### 创建超级用户（superuser）用来管理后台（包括登录）....../admin
 
